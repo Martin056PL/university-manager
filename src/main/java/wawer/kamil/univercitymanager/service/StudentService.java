@@ -7,4 +7,6 @@ import java.util.List;
 public interface StudentService {
 
     List<StudentResponse> getAllStudents();
+
+    StudentResponse getStudentById(String id);
 }

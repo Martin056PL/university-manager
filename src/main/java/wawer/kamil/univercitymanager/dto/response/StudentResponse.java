@@ -12,5 +12,5 @@ public class StudentResponse {
     private String firstName;
     private String lastName;
     private LocalDate joinToUniversityDate;
-    private Set<Course> joinedCours;
+    private Set<Course> joinedCourses;
 }

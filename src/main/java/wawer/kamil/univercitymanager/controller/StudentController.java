@@ -2,9 +2,7 @@ package wawer.kamil.univercitymanager.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import wawer.kamil.univercitymanager.dto.response.StudentResponse;
 import wawer.kamil.univercitymanager.service.StudentService;
 
@@ -20,5 +18,10 @@ public class StudentController {
     @GetMapping()
     public ResponseEntity<List<StudentResponse>> getAllStudents(){
         return ResponseEntity.ok(studentService.getAllStudents());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<StudentResponse> getStudentById(@PathVariable String id){
+        return ResponseEntity.ok(studentService.getStudentById(id));
     }
 }
