@@ -14,4 +14,6 @@ public interface StudentService {
     StudentResponse saveStudent(StudentRequest studentRequest);
 
     StudentResponse updateStudentById(String id, StudentRequest studentRequest);
+
+    void deleteStudentById(String id);
 }

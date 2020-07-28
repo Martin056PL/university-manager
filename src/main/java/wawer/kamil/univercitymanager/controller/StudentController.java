@@ -19,12 +19,12 @@ public class StudentController {
     private final StudentService studentService;
 
     @GetMapping()
-    public ResponseEntity<List<StudentResponse>> getAllStudents(){
+    public ResponseEntity<List<StudentResponse>> getAllStudents() {
         return ResponseEntity.ok(studentService.getAllStudents());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StudentResponse> getStudentById(@PathVariable String id){
+    public ResponseEntity<StudentResponse> getStudentById(@PathVariable String id) {
         return ResponseEntity.ok(studentService.getStudentById(id));
     }
 
@@ -35,7 +35,13 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<StudentResponse> updateStudentById(@PathVariable String id, @RequestBody StudentRequest studentRequest){
+    public ResponseEntity<StudentResponse> updateStudentById(@PathVariable String id, @RequestBody StudentRequest studentRequest) {
         return ResponseEntity.ok(studentService.updateStudentById(id, studentRequest));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteStudentById(@PathVariable String id) {
+        studentService.deleteStudentById(id);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -2,17 +2,14 @@ package wawer.kamil.univercitymanager.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.BeanUtils;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import wawer.kamil.univercitymanager.dto.request.StudentRequest;
 import wawer.kamil.univercitymanager.dto.response.StudentResponse;
-import wawer.kamil.univercitymanager.exceptions.NoFoundException;
+import wawer.kamil.univercitymanager.exceptions.NotFoundException;
 import wawer.kamil.univercitymanager.model.Student;
 import wawer.kamil.univercitymanager.repository.StudentRepository;
 import wawer.kamil.univercitymanager.service.StudentService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -26,13 +23,13 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentResponse> getAllStudents() {
-        List<Student> students = Optional.of(studentRepository.findAll()).orElse(new ArrayList<>());
+        List<Student> students = Optional.of(studentRepository.findAll()).orElseThrow(() -> new NotFoundException("Not Found"));
         return students.stream().map(student -> modelMapper.map(student, StudentResponse.class)).collect(Collectors.toList());
     }
 
     @Override
     public StudentResponse getStudentById(String id) {
-        Student student = studentRepository.findById(id).orElseThrow(() -> new NoFoundException("Not Found"));
+        Student student = studentRepository.findById(id).orElseThrow(() -> new NotFoundException("Not Found"));
         return modelMapper.map(student, StudentResponse.class);
     }
 
@@ -51,7 +48,16 @@ public class StudentServiceImpl implements StudentService {
             Student savedStudent = studentRepository.save(studentFromRequest);
             return modelMapper.map(savedStudent, StudentResponse.class);
         } else {
-            throw new NoFoundException("Not Found");
+            throw new NotFoundException("Not Found");
+        }
+    }
+
+    @Override
+    public void deleteStudentById(String id) {
+        if (studentRepository.existsById(id)) {
+            studentRepository.deleteById(id);
+        } else {
+            throw new NotFoundException("Not Found");
         }
     }
 }
