@@ -1,4 +1,4 @@
-package wawer.kamil.univercitymanager.dto.response;
+package wawer.kamil.univercitymanager.dto.request;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -10,9 +10,8 @@ import java.util.Set;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class StudentResponse {
+public class StudentRequest {
 
-    private String id;
     private String firstName;
     private String lastName;
     private LocalDate joinToUniversityDate;
