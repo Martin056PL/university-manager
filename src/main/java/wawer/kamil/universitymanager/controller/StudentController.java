@@ -28,6 +28,11 @@ public class StudentController {
         return ResponseEntity.ok(studentService.getStudentById(id));
     }
 
+    @GetMapping("/pagination/{page}")
+    public ResponseEntity<List<StudentResponse>> getPaginatedListOfStudents(@RequestParam Integer size, @PathVariable Integer page){
+        return ResponseEntity.ok(studentService.getPaginatedListOfStudents(size, page));
+    }
+
     @PostMapping("/generate")
     public ResponseEntity<String> generateRandomStudents(){
         studentService.generateRandomStudents();

@@ -2,6 +2,9 @@ package wawer.kamil.universitymanager.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import wawer.kamil.universitymanager.dto.request.StudentRequest;
 import wawer.kamil.universitymanager.dto.response.StudentResponse;
@@ -66,5 +69,13 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void generateRandomStudents() {
         studentRepository.saveAll(studentsGenerator.getList());
+    }
+
+    @Override
+    public List<StudentResponse> getPaginatedListOfStudents(Integer size, Integer page) {
+        Pageable pageableSettings = PageRequest.of(page,size);
+        Page<Student> pageResults = studentRepository.findAll(pageableSettings);
+        List<Student> studentList = pageResults.getContent();
+        return studentList.stream().map(student -> modelMapper.map(student, StudentResponse.class)).collect(Collectors.toList());
     }
 }

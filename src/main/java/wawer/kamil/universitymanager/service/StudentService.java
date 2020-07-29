@@ -18,4 +18,6 @@ public interface StudentService {
     void deleteStudentById(String id);
 
     void generateRandomStudents();
+
+    List<StudentResponse> getPaginatedListOfStudents(Integer size, Integer page);
 }

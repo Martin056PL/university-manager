@@ -20,7 +20,7 @@ public class StudentsGenerator {
 
     public List<Student> getList() {
         List<Student> studentList = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10000; i++) {
             studentList.add(generateStudent());
         }
         return studentList;
