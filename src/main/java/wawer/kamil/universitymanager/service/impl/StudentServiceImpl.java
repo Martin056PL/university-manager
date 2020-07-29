@@ -1,14 +1,15 @@
-package wawer.kamil.univercitymanager.service.impl;
+package wawer.kamil.universitymanager.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import wawer.kamil.univercitymanager.dto.request.StudentRequest;
-import wawer.kamil.univercitymanager.dto.response.StudentResponse;
-import wawer.kamil.univercitymanager.exceptions.NotFoundException;
-import wawer.kamil.univercitymanager.model.Student;
-import wawer.kamil.univercitymanager.repository.StudentRepository;
-import wawer.kamil.univercitymanager.service.StudentService;
+import wawer.kamil.universitymanager.dto.request.StudentRequest;
+import wawer.kamil.universitymanager.dto.response.StudentResponse;
+import wawer.kamil.universitymanager.exceptions.NotFoundException;
+import wawer.kamil.universitymanager.model.Student;
+import wawer.kamil.universitymanager.repository.StudentRepository;
+import wawer.kamil.universitymanager.service.StudentService;
+import wawer.kamil.universitymanager.utils.generator.student.StudentsGenerator;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
+    private final StudentsGenerator studentsGenerator;
     private final ModelMapper modelMapper;
 
     @Override
@@ -59,5 +61,10 @@ public class StudentServiceImpl implements StudentService {
         } else {
             throw new NotFoundException("Not Found");
         }
+    }
+
+    @Override
+    public void generateRandomStudents() {
+        studentRepository.saveAll(studentsGenerator.getList());
     }
 }

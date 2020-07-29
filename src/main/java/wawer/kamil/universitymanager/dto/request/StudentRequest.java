@@ -1,9 +1,9 @@
-package wawer.kamil.univercitymanager.dto.request;
+package wawer.kamil.universitymanager.dto.request;
 
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import wawer.kamil.univercitymanager.model.Course;
+import wawer.kamil.universitymanager.model.Course;
 
 import java.time.LocalDate;
 import java.util.Set;

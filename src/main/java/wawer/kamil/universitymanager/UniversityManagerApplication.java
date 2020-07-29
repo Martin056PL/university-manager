@@ -1,13 +1,13 @@
-package wawer.kamil.univercitymanager;
+package wawer.kamil.universitymanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UnivercityManagerApplication {
+public class UniversityManagerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UnivercityManagerApplication.class, args);
-    }
+        SpringApplication.run(UniversityManagerApplication.class, args);
 
+    }
 }

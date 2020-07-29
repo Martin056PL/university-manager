@@ -1,11 +1,11 @@
-package wawer.kamil.univercitymanager.controller;
+package wawer.kamil.universitymanager.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import wawer.kamil.univercitymanager.dto.request.StudentRequest;
-import wawer.kamil.univercitymanager.dto.response.StudentResponse;
-import wawer.kamil.univercitymanager.service.StudentService;
+import wawer.kamil.universitymanager.dto.request.StudentRequest;
+import wawer.kamil.universitymanager.dto.response.StudentResponse;
+import wawer.kamil.universitymanager.service.StudentService;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -26,6 +26,12 @@ public class StudentController {
     @GetMapping("/{id}")
     public ResponseEntity<StudentResponse> getStudentById(@PathVariable String id) {
         return ResponseEntity.ok(studentService.getStudentById(id));
+    }
+
+    @PostMapping("/generate")
+    public ResponseEntity<String> generateRandomStudents(){
+        studentService.generateRandomStudents();
+        return ResponseEntity.ok("Generated");
     }
 
     @PostMapping

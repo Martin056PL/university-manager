@@ -1,4 +1,4 @@
-package wawer.kamil.univercitymanager.model;
+package wawer.kamil.universitymanager.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

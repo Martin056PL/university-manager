@@ -1,7 +1,7 @@
-package wawer.kamil.univercitymanager.service;
+package wawer.kamil.universitymanager.service;
 
-import wawer.kamil.univercitymanager.dto.request.StudentRequest;
-import wawer.kamil.univercitymanager.dto.response.StudentResponse;
+import wawer.kamil.universitymanager.dto.request.StudentRequest;
+import wawer.kamil.universitymanager.dto.response.StudentResponse;
 
 import java.util.List;
 
@@ -16,4 +16,6 @@ public interface StudentService {
     StudentResponse updateStudentById(String id, StudentRequest studentRequest);
 
     void deleteStudentById(String id);
+
+    void generateRandomStudents();
 }

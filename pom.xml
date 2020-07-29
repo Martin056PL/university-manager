@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>wawer.kamil</groupId>
-    <artifactId>univercity-manager</artifactId>
+    <artifactId>university-manager</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>univercity-manager</name>
+    <name>university-manager</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

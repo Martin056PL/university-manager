@@ -1,4 +1,4 @@
-package wawer.kamil.univercitymanager.exceptions;
+package wawer.kamil.universitymanager.exceptions;
 
 public class NotFoundException extends RuntimeException {
 

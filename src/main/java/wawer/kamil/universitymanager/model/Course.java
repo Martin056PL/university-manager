@@ -1,4 +1,4 @@
-package wawer.kamil.univercitymanager.model;
+package wawer.kamil.universitymanager.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +13,6 @@ public class Course {
     @Indexed
     private String courseName;
     private String teacher;
-    private boolean isCourseHaveExam;
+    private boolean isCourseHasExam;
 
 }
