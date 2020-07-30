@@ -59,10 +59,10 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentResponse updateStudentById(String id, StudentRequest studentRequest) {
-        Student studentFromRequest = modelMapperHelper.mapStudentRequestToStudentEntity(studentRequest);
         if (!studentRepository.existsById(id)) {
             throw new NotFoundException("Not Found");
         }
+        Student studentFromRequest = modelMapperHelper.mapStudentRequestToStudentEntity(studentRequest);
         studentFromRequest.setId(id);
         Student savedStudentEntity = studentRepository.save(studentFromRequest);
         return modelMapperHelper.mapStudentEntityToStudentResponse(savedStudentEntity);
