@@ -4,13 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import wawer.kamil.universitymanager.model.Course;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 @Component
 @RequiredArgsConstructor
 public class CourseGenerator {
 
-    private final Random random;
+    private final SecureRandom random;
     private static final int BORDER_FOR_RANDOM_NUMBER_FOR_EXAM = 2;
 
     public Course generateCourse() {

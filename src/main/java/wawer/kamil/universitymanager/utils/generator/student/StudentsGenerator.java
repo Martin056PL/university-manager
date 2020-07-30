@@ -6,14 +6,18 @@ import wawer.kamil.universitymanager.model.Course;
 import wawer.kamil.universitymanager.model.Student;
 import wawer.kamil.universitymanager.utils.generator.course.CourseGenerator;
 
+import java.security.SecureRandom;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
 public class StudentsGenerator {
 
-    private final Random random;
+    private final SecureRandom random;
     private final StudentJoinedDateGenerator studentJoinedDateGenerator;
     private final CourseGenerator courseGenerator;
 

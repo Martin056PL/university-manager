@@ -4,7 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 @Configuration
 public class ApplicationConfiguration {
@@ -15,8 +15,8 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public Random randomGenerator(){
-        return new Random();
+    public SecureRandom randomGenerator() {
+        return new SecureRandom();
     }
 
 }

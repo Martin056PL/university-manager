@@ -3,14 +3,14 @@ package wawer.kamil.universitymanager.utils.generator.student;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.security.SecureRandom;
 import java.time.LocalDate;
-import java.util.Random;
 
 @Component
 @RequiredArgsConstructor
 public class StudentJoinedDateGenerator {
 
-    private final Random random;
+    private final SecureRandom random;
     private static final int JOINING_DAY_OF_MONTH = 1;
     private static final int JOINING_AUTUMN_MONTH = 10;
     private static final int JOINING_WINTER_MONTH = 2;
