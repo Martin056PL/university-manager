@@ -39,6 +39,19 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public List<StudentResponse> getPaginatedListOfStudents(Integer size, Integer page) {
+        Pageable pageableSettings = PageRequest.of(page, size);
+        Page<Student> pageResults = studentRepository.findAll(pageableSettings);
+        List<Student> studentList = pageResults.getContent();
+        return studentList.stream().map(student -> modelMapper.map(student, StudentResponse.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public void generateRandomStudents() {
+        studentRepository.saveAll(studentsGenerator.getList());
+    }
+
+    @Override
     public StudentResponse saveStudent(StudentRequest studentRequest) {
         Student student = modelMapper.map(studentRequest, Student.class);
         Student savedStudent = studentRepository.save(student);
@@ -59,23 +72,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void deleteStudentById(String id) {
-        if (studentRepository.existsById(id)) {
-            studentRepository.deleteById(id);
-        } else {
+        if (!studentRepository.existsById(id)) {
             throw new NotFoundException("Not Found");
         }
-    }
-
-    @Override
-    public void generateRandomStudents() {
-        studentRepository.saveAll(studentsGenerator.getList());
-    }
-
-    @Override
-    public List<StudentResponse> getPaginatedListOfStudents(Integer size, Integer page) {
-        Pageable pageableSettings = PageRequest.of(page,size);
-        Page<Student> pageResults = studentRepository.findAll(pageableSettings);
-        List<Student> studentList = pageResults.getContent();
-        return studentList.stream().map(student -> modelMapper.map(student, StudentResponse.class)).collect(Collectors.toList());
+        studentRepository.deleteById(id);
     }
 }

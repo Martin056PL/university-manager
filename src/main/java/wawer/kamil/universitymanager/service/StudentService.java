@@ -11,13 +11,13 @@ public interface StudentService {
 
     StudentResponse getStudentById(String id);
 
+    List<StudentResponse> getPaginatedListOfStudents(Integer size, Integer page);
+
+    void generateRandomStudents();
+
     StudentResponse saveStudent(StudentRequest studentRequest);
 
     StudentResponse updateStudentById(String id, StudentRequest studentRequest);
 
     void deleteStudentById(String id);
-
-    void generateRandomStudents();
-
-    List<StudentResponse> getPaginatedListOfStudents(Integer size, Integer page);
 }
